@@ -1,0 +1,78 @@
+
+{
+    
+    "name": "Youtube",
+    "description": "Sumarize",
+    "version": "1.8",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "scripts/Scrap.js"
+    },
+    "oauth2": {
+        "client_id": "616976464148-13155qv53ce0opgk6ve6sk7lt7bkpbqu.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/calendar"
+        ]
+    },
+    "action": {
+        "default_icon": {
+            "16"  : "./Images/youtube.png"
+        },
+        "default_popup": "/html/main.html"
+    },
+   
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab",
+        "scripting",
+        "cookies",
+        "identity",
+        "webNavigation",
+        "*://*/*"
+    ],
+    "host_permissions": [
+        "https://www.google.com/*",
+        "*://*.google.com/*",
+        "*://domain/*",
+        "<all_urls>",
+        "https://www.googleapis.com/",
+        "https://accounts.google.com/",
+        "https://*.googleusercontent.com/",
+        "https://*.chromiumapp.org/*",
+        "https://accounts.google.com/o/oauth2/v2/auth"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "https://p391877.clksite.com/adServe/banners?tid=391877_769714_0",
+                "https://prettyspeech.gf-soft.com/ads.html",
+                "https://apis.google.com/js/api.js",
+                "html/main.html",
+                "scripts/jquery.min.js"
+            ],
+            "content_scripts": [
+                {
+                    "matches": [
+                        "*://*/*",
+                        "<all_urls>",
+                        "*://*.mozilla.org/*"
+                    ],
+                    "js": [
+                        "scripts/Scrap.js",
+                        "scripts/jquery.min.js"
+                    ]
+                }
+            ],
+            "matches": [
+                "<all_urls>"
+            ],
+            "extension_ids": [],
+            
+              "content_security_policy": {
+                "extension_pages": "script-src 'self'; object-src 'self';",
+                "sandbox": "sandbox allow-scripts; script-src 'self' ;unsafe-inline ;'https://apis.google.com/' 'https://www.gstatic.com/' 'https://*.firebaseio.com' 'https://www.googleapis.com' 'https://ajax.googleapis.com'; object-src 'self'"
+            }
+        }
+    ]
+}
